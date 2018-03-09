@@ -16,6 +16,16 @@
   <meta http-equiv="cleartype" content="on" />
 
   <style type="text/css">
+    input {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 5;
+      background-color: white;
+      width: 30%;
+      height: 10%;
+    }
     * {
       padding: 0;
       margin: 0;
@@ -58,6 +68,8 @@
   </style>
 </head>
 <body>
+  <div id="container">
   <canvas id="game"></canvas>
+</div>
 </body>
 </html>

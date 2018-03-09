@@ -1,5 +1,5 @@
 {
-  "name": "phaser-template",
+  "name": "super-smash-fence",
   "version": "0.1.0",
   "description": "A very basic webpack based Phaser 3 template",
   "scripts": {
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:pixelpicosean/phaser3-template.git"
+    "url": "git@github.com:Lightning3105/Sumo-Smash-Fencing.git"
   },
   "license": "MIT",
-  "author": "Sean Bohan <pixelpicosean@gmail.com> (http://reddypanda.com)",
+  "author": "James & Liam",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.18",
     "colors": "^1.1.2",

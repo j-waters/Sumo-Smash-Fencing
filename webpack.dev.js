@@ -8,6 +8,7 @@ const colors = require('colors/safe');
 
 const portfinder = require('portfinder');
 portfinder.basePort = 4000;
+const host = '10.138.184.136'
 
 portfinder.getPort(function(err, finalPort) {
     if (err) {
@@ -17,7 +18,7 @@ portfinder.getPort(function(err, finalPort) {
         entry: {
             game: [
                 // Live-reload
-                `webpack-dev-server/client?http://localhost:${finalPort}`,
+                `webpack-dev-server/client?http://${host}:${finalPort}`,
             ],
         },
         devtool: 'source-map',
