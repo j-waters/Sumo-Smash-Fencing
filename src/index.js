@@ -24,11 +24,11 @@ function create ()
 
     this.tweens.add({
         targets: logo,
-        y: 450,
-        duration: 2000,
+        y: 450, // Destination y-coordinate
+        duration: 2000, // 2 Seconds
         ease: 'Power2',
         yoyo: true,
-        loop: -1
+        loop: -1 // Infinite Loop
     });
 
 }
