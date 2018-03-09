@@ -1,4 +1,6 @@
 import Title from './Title';
+import Controller from './Controller';
+
 
 var game;
 
@@ -24,13 +26,14 @@ window.mobilecheck = function() {
   };
 
 window.onload = function() {
+    window.g = {}
     game = new Phaser.Game({
         type: Phaser.AUTO,
         canvas: document.getElementById('game'),
         width: 1280,
         height: 640,
         scene: [
-            Title,
+            Title, Controller
         ],
     });
 
