@@ -1,17 +1,23 @@
-# Phaser 3 Webpack Project Template
+# Phaser 3 template (ES5)
 
-A Phaser 3 Project Template
+Very basic template project for game development with Phaser 3.
 
-### Requirements
+## Feature
 
-We need [Node.js](https://nodejs.org) to install and run scripts.
+- dev server with live-reload
+- build
+- simple `SHOW_ALL` style stretch mode
+- webpack
+- clean structure
+- automatically find available port (start from 4000)
 
-## Install and run
+## How to run
 
-Run next commands in your terminal:
+- Development: `npm run start`
+- Build: `npm run build`
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install dependencies and launch browser with examples.|
-| `npm start` | Launch browser to show the examples. <br> Press `Ctrl + c` to kill **http-server** process. |
-=======
+## Folders
+
+- assets: raw assets, you can put images and texture packer files here, export atlas to `media` folder
+- media: image, atlas, sound and whatever you need to ship with the final game
+- src: source code locates here, `main.js` is the entry
