@@ -45,7 +45,7 @@ export default new Phaser.Class({
             window.g.socket = io.connect('http://127.0.0.1:5000'); // Triggers connect on server (in Python File)
             window.g.socket.on('connect', function() {
                 console.log("connect")
-                window.g.socket.emit('start', {'data': 'desktop'});
+                window.g.socket.emit('start');
             });
             window.g.socket.on('getcode', function(data) {
                 codeText.setText('CODE: ' + data.data)
