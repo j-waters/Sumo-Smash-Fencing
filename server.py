@@ -1,5 +1,5 @@
 import flask
-from flask_socketio import SocketIO, join_room, leave_room, emit
+from flask_socketio import SocketIO, join_room, leave_room, emit, rooms
 
 from random import randint
 from json import dumps
@@ -7,8 +7,6 @@ from json import dumps
 app = flask.Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
-
-
 
 @app.route('/') # HTTP Request for the root page
 def game():
@@ -30,23 +28,29 @@ def connection():
     pass
 
 @socketio.on('disconnect') # When it receives a disconnect message, it runs the function
-def connection():
+def disconnection():
     print("disconnect")
 
 @socketio.on('controller')
-def connection(data):
-    join_room(data['data'])
-    emit('joinroom', {'colour': '#ff0000'}, room=flask.request.sid)
+def controller(data):
+    join_room(str(data['data']))
+    emit('joinroom', {'colour': '#ff0000'}, broadcast=True)
 
 @socketio.on('start')
 def desktop_join(data):
     room = randint(0, 99999)
-    join_room(room)
+    join_room(str(room))
     emit('getcode', {'data': room})
 
+@socketio.on('direction')
+def direct(data):
+    emit('direction', data, broadcast=True)
 
 # send(username + ' has entered the room.', room=room)
 
-
 if __name__ == "__main__":
-    socketio.run(app, host='10.138.184.47', debug=True)
+    if False:
+        host = '10.138.184.47'
+    else:
+        host = '127.0.0.1'
+    socketio.run(app, host=host, debug=True)

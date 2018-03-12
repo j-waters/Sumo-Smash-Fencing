@@ -26,7 +26,7 @@ window.mobilecheck = function() {
   };
 
 window.onload = function() { // When the page loads, this function is run
-    window.g = {}
+    window.g = {players: {}}
     game = new Phaser.Game({
         type: Phaser.AUTO,
         canvas: document.getElementById('game'),

@@ -39,13 +39,15 @@ export default new Phaser.Class({
             
             this.stick.x = 350 + deltaX;
             this.stick.y = 320 + deltaY;
-            
+
+            window.g.socket.emit('direction', {'x': deltaX, 'y': deltaY, 'colour': window.g.colour});            
     
         }, this);
 
         this.input.on('pointerup', function(){
             this.stick.x = 350
             this.stick.y = 320
+            window.g.socket.emit('direction', {'x': 0, 'y': 0, 'colour': window.g.colour});
         }, this)
 	}
 })

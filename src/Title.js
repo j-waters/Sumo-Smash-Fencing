@@ -1,4 +1,5 @@
 import io from 'socket.io-client'
+import Player from './Player'
 
 
 export default new Phaser.Class({
@@ -13,6 +14,7 @@ export default new Phaser.Class({
     },
 
     create: function() {
+        var host = '127.0.0.1'//'10.138.184.47'
         if (window.mobilecheck()){
             var title = this.add.text(640, 150, 'ENTER CODE:', { fontFamily: 'Arial', fontSize: 64, color: '#ffffff', 'text-align': 'center' });
             var container = document.getElementById("container");
@@ -22,7 +24,7 @@ export default new Phaser.Class({
             container.appendChild(input);
             var enter = this.add.sprite(640, 400, "enter").setInteractive()
             enter.setDisplaySize(380, 100)
-            window.g.socket = io.connect('http://10.138.184.47:5000');
+            window.g.socket = io.connect('http://' + host + ':5000');
             window.g.socket.on('joinroom', function(data) {
                 window.g.colour = data.colour
                 input.parentNode.removeChild(input);
@@ -38,16 +40,31 @@ export default new Phaser.Class({
             var code = 54679
             var codeText = this.add.text(640, 250, 'CODE: -----', { fontFamily: 'Arial', fontSize: 64, color: '#ffffff', 'text-align': 'center' });
             codeText.setOrigin(0.5, 0.5)
-            window.g.socket = io.connect('http://10.138.184.47:5000');
+            window.g.socket = io.connect('http://' + host + ':5000');
             window.g.socket.on('connect', function() {
                 console.log("connect")
-                window.g.socket.emit('start');
+                window.g.socket.emit('start', {'data': 'desktop'});
             });
             window.g.socket.on('getcode', function(data) {
                 codeText.setText('CODE: ' + data.data)
+                console.log(data.data)
             })
+
+            window.g.socket.on('direction', function(data) {
+                window.g.players[data.colour].move(data)
+            })
+
+            window.g.socket.on('joinroom', function(data) {
+                window.g.players[data.colour] = new Player(this, 100, 100, data.colour)
+            }.bind(this))
         }
         title.setOrigin(0.5, 0.5)
         
     },
+
+    update: function() {
+        for (var k in window.g.players) {
+            window.g.players[k].update()
+        }
+    }
 });
