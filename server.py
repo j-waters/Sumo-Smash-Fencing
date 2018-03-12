@@ -10,25 +10,26 @@ socketio = SocketIO(app)
 
 
 
-@app.route('/')
+@app.route('/') # HTTP Request for the root page
 def game():
     return flask.send_file('build/index.html')
 
 
-@app.route('/game.js')
+@app.route('/game.js') # HTTPS Request for the JavaScript for the game
 def dep1():
     return flask.send_file('build/game.js')
 
 
-@app.route('/vendor.js')
+@app.route('/vendor.js') # HTTP Request for Misc. JavaScript
 def dep2():
     return flask.send_file('build/vendor.js')
 
-@socketio.on('connect')
+# Uses Websocket Protocol
+@socketio.on('connect') # When it receives a connect message, it runs the function
 def connection():
     pass
 
-@socketio.on('disconnect')
+@socketio.on('disconnect') # When it receives a disconnect message, it runs the function
 def connection():
     print("disconnect")
 

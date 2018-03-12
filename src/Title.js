@@ -41,7 +41,7 @@ export default new Phaser.Class({
             window.g.socket = io.connect('http://10.138.184.47:5000');
             window.g.socket.on('connect', function() {
                 console.log("connect")
-                window.g.socket.emit('start', {'data': 'desktop'});
+                window.g.socket.emit('start');
             });
             window.g.socket.on('getcode', function(data) {
                 codeText.setText('CODE: ' + data.data)
