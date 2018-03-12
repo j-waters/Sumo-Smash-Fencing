@@ -22,5 +22,30 @@ export default new Phaser.Class({
 
         this.stick = this.add.sprite(350, 320, "controller/stick")
         this.stick.setDisplaySize(200, 200)
+
+        this.input.on('pointermove', function (pointer) {
+            var deltaX = pointer.x - 350
+            var deltaY = pointer.y - 320
+            var delta = Math.hypot(deltaX, deltaY)
+
+            var maxDistanceInPixels = 200
+
+            var angle = Phaser.Math.Angle.Between(350, 320, pointer.x, pointer.y);
+
+            if (delta > maxDistanceInPixels) {
+                deltaX = (deltaX===0) ? 0 : Math.cos(angle) * maxDistanceInPixels;
+                deltaY = (deltaY===0)? 0 : Math.sin(angle) * maxDistanceInPixels;
+            }
+            
+            this.stick.x = 350 + deltaX;
+            this.stick.y = 320 + deltaY;
+            
+    
+        }, this);
+
+        this.input.on('pointerup', function(){
+            this.stick.x = 350
+            this.stick.y = 320
+        }, this)
 	}
 })

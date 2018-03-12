@@ -22,7 +22,7 @@ export default new Phaser.Class({
             container.appendChild(input);
             var enter = this.add.sprite(640, 400, "enter").setInteractive()
             enter.setDisplaySize(380, 100)
-            window.g.socket = io.connect('http://127.0.0.1:5000');
+            window.g.socket = io.connect('http://10.138.184.47:5000');
             window.g.socket.on('joinroom', function(data) {
                 window.g.colour = data.colour
                 input.parentNode.removeChild(input);
@@ -38,7 +38,7 @@ export default new Phaser.Class({
             var code = 54679
             var codeText = this.add.text(640, 250, 'CODE: -----', { fontFamily: 'Arial', fontSize: 64, color: '#ffffff', 'text-align': 'center' });
             codeText.setOrigin(0.5, 0.5)
-            window.g.socket = io.connect('http://127.0.0.1:5000');
+            window.g.socket = io.connect('http://10.138.184.47:5000');
             window.g.socket.on('connect', function() {
                 console.log("connect")
                 window.g.socket.emit('start', {'data': 'desktop'});
