@@ -39,7 +39,6 @@ export default new Phaser.Class({
             
             this.stick.x = 350 + deltaX;
             this.stick.y = 320 + deltaY;
-
             window.g.socket.emit('direction', {'x': deltaX, 'y': deltaY, 'colour': window.g.colour});            
     
         }, this);

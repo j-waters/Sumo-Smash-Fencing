@@ -1,7 +1,7 @@
 import flask
 from flask_socketio import SocketIO, join_room, leave_room, emit, rooms
 
-from random import randint
+from random import randint, choice
 from json import dumps
 
 app = flask.Flask(__name__)
@@ -34,23 +34,31 @@ def disconnection():
 @socketio.on('controller')
 def controller(data):
     join_room(str(data['data']))
-    emit('joinroom', {'colour': '#ff0000'}, broadcast=True)
+    c = choice(['#ff0000', '#00ff00', '#0000ff'])
+    emit('joinroom', {'colour': c})
+    emit('newplayer', {'colour': c}, broadcast=True, room=get_room())
+
+def get_room():
+    for i in rooms():
+        if len(i) < 10:
+            return i
 
 @socketio.on('start')
 def desktop_join(data):
-    room = randint(0, 99999)
+    room = randint(0, 10)
     join_room(str(room))
     emit('getcode', {'data': room})
 
 @socketio.on('direction')
 def direct(data):
-    emit('direction', data, broadcast=True)
+    print(rooms())
+    emit('direction', data, broadcast=True, room=get_room())
 
 # send(username + ' has entered the room.', room=room)
 
 if __name__ == "__main__":
-    if False:
-        host = '10.138.184.47'
+    if True:
+        host = '10.138.187.102'
     else:
         host = '127.0.0.1'
     socketio.run(app, host=host, debug=True)

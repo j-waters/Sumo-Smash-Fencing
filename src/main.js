@@ -1,5 +1,6 @@
 import Title from './Title';
 import Controller from './Controller';
+import Game from './Game';
 
 
 var game;
@@ -33,7 +34,7 @@ window.onload = function() { // When the page loads, this function is run
         width: 1280,
         height: 640,
         scene: [
-            Title, Controller
+            Title, Controller, Game
         ],
     });
 

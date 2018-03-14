@@ -11,10 +11,11 @@ export default new Phaser.Class({
 
     preload: function() {
         this.load.image('enter', 'assets/enter.png');
+        this.load.image('start', 'assets/start.png');
     },
 
     create: function() {
-        var host = '127.0.0.1'//'10.138.184.47'
+        var host = '10.138.187.102'
         if (window.mobilecheck()){
             var title = this.add.text(640, 150, 'ENTER CODE:', { fontFamily: 'Arial', fontSize: 64, color: '#ffffff', 'text-align': 'center' });
             var container = document.getElementById("container");
@@ -54,9 +55,15 @@ export default new Phaser.Class({
                 window.g.players[data.colour].move(data)
             })
 
-            window.g.socket.on('joinroom', function(data) {
+            window.g.socket.on('newplayer', function(data) {
                 window.g.players[data.colour] = new Player(this, 100, 100, data.colour)
             }.bind(this))
+
+            var start = this.add.sprite(640, 400, "start").setInteractive()
+
+            start.on('pointerdown', function(){
+                this.scene.start('game')
+            }, this)
         }
         title.setOrigin(0.5, 0.5)
         
