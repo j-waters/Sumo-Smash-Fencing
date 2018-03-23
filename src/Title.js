@@ -55,6 +55,10 @@ export default new Phaser.Class({
                 window.g.players[data.colour].move(data)
             })
 
+            window.g.socket.on('dash', function(data) {
+                window.g.players[data.colour].dash()
+            })
+
             window.g.socket.on('newplayer', function(data) {
                 window.g.players[data.colour] = new Player(this, 100, 100, data.colour)
             }.bind(this))

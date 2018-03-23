@@ -51,8 +51,11 @@ def desktop_join(data):
 
 @socketio.on('direction')
 def direct(data):
-    print(rooms())
     emit('direction', data, broadcast=True, room=get_room())
+
+@socketio.on('dash')
+def dash(data):
+    emit('dash', data, broadcast=True, room=get_room())
 
 # send(username + ' has entered the room.', room=room)
 

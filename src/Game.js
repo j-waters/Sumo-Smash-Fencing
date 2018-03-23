@@ -17,7 +17,7 @@ export default new Phaser.Class({
 		})*/
 		var back = this.add.image(640, 320, 'level/1')
 		for (var i in window.g.players){
-			window.g.players[i] = new Player(this, 500, 500, window.g.players[i].colour)
+			window.g.players[i] = new Player(this, 500, 300, window.g.players[i].colour)
 		}
 	},
 
