@@ -58,7 +58,7 @@ def direct(data):
 
 if __name__ == "__main__":
     if True:
-        host = '10.138.187.102'
+        host = '10.138.184.24'
     else:
         host = '127.0.0.1'
     socketio.run(app, host=host, debug=True)

@@ -15,7 +15,7 @@ export default new Phaser.Class({
     },
 
     create: function() {
-        var host = '10.138.187.102'
+        var host = '10.138.184.24'
         if (window.mobilecheck()){
             var title = this.add.text(640, 150, 'ENTER CODE:', { fontFamily: 'Arial', fontSize: 64, color: '#ffffff', 'text-align': 'center' });
             var container = document.getElementById("container");

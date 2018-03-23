@@ -8,7 +8,7 @@ const colors = require('colors/safe');
 
 const portfinder = require('portfinder');
 portfinder.basePort = 4000;
-const host = '10.138.187.102'
+const host = '10.138.184.24'
 
 portfinder.getPort(function(err, finalPort) {
     if (err) {
