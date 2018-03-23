@@ -23,7 +23,6 @@ Very basic template project for game development with Phaser 3.
 - src: source code locates here, `main.js` is the entry
 
 
-########################################################
 
 ## The Game
 
