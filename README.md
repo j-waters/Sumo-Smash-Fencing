@@ -32,3 +32,10 @@ Each person is assigned a colour when they join, which correllates to the colour
 
 Max number of players (current) = 4
 
+
+## Possible Ideas
+
+# Items:
+- Bomb?
+- Weapons?
+- Fire dash ability?
