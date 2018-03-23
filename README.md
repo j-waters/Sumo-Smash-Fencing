@@ -35,7 +35,7 @@ Max number of players (current) = 4
 
 ## Possible Ideas
 
-# Items:
+### Items:
 - Bomb?
 - Weapons?
 - Fire dash ability?
